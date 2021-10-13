@@ -2,3 +2,6 @@
 en.subject.pdf
 main.c
 libft/
+tester
+*.o
+*.a

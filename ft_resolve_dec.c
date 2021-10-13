@@ -6,7 +6,7 @@
 /*   By: idavoli- <idavoli-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 03:30:00 by idavoli-          #+#    #+#             */
-/*   Updated: 2021/10/13 01:49:54 by idavoli-         ###   ########.fr       */
+/*   Updated: 2021/10/13 02:17:34 by idavoli-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,9 @@ int	ft_resolve_dec(int n)
 {
 	int	i;
 
-	i = 1;
 	ft_putnbr_fd(n, 1);
+	n /= 10;
+	i = 1;
 	while (n)
 	{
 		i++;
