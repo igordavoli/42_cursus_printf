@@ -5,14 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: idavoli- <idavoli-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/08 02:46:34 by idavoli-          #+#    #+#             */
-/*   Updated: 2021/10/13 01:34:18 by idavoli-         ###   ########.fr       */
+/*   Created: 2021/10/13 01:54:47 by idavoli-          #+#    #+#             */
+/*   Updated: 2021/10/13 01:56:25 by idavoli-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int	ft_select_format(char c , va_list args)
+static int	ft_select_format(char c, va_list args)
 {
 	int	len;
 
@@ -22,13 +22,15 @@ static int	ft_select_format(char c , va_list args)
 	if (c == 's')
 		len = ft_resolve_str(va_arg(args, char *));
 	if (c == 'd' || c == 'i')
-		len = ft_resolve_dec(va_arg(args, unsigned int));
+		len = ft_resolve_dec(va_arg(args, int));
+	if (c == 'u')
+		len = ft_resolve_uns(va_arg(args, unsigned int));
 	if (c == 'p')
 		len = ft_resolve_ptr(va_arg(args, void *));
 	if (c == 'x')
 		len = ft_resolve_hex(va_arg(args, unsigned int), 0);
 	if (c == 'X')
-		len = ft_resolve_hex(va_arg(args, int), 1);
+		len = ft_resolve_hex(va_arg(args, unsigned int), 1);
 	if (c == '%')
 		len = ft_resolve_prc();
 	return (len);
@@ -37,8 +39,8 @@ static int	ft_select_format(char c , va_list args)
 int	ft_printf(const char *str, ...)
 {
 	va_list	args;
-	int	i;
-	int lengths;
+	int		i;
+	int		lengths;
 
 	va_start(args, str);
 	lengths = 0;
@@ -52,5 +54,5 @@ int	ft_printf(const char *str, ...)
 		i++;
 	}
 	va_end(args);
-	return(i + lengths);
+	return (i + lengths);
 }

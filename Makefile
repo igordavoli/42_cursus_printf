@@ -6,7 +6,7 @@
 #    By: idavoli- <idavoli-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/10 15:35:57 by idavoli-          #+#    #+#              #
-#    Updated: 2021/10/13 00:51:38 by idavoli-         ###   ########.fr        #
+#    Updated: 2021/10/13 01:45:13 by idavoli-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,8 @@ SRCS= ft_printf.c \
 	ft_resolve_ptr.c \
 	ft_resolve_chr.c \
 	ft_resolve_prc.c \
-	ft_resolve_hex.c
+	ft_resolve_hex.c \
+	ft_resolve_uns.c
 
 OBJS=${SRCS:.c=.o}
 

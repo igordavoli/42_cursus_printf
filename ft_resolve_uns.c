@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_resolve_dec.c                                   :+:      :+:    :+:   */
+/*   ft_resolve_uns.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: idavoli- <idavoli-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 03:30:00 by idavoli-          #+#    #+#             */
-/*   Updated: 2021/10/13 01:49:54 by idavoli-         ###   ########.fr       */
+/*   Updated: 2021/10/13 01:51:53 by idavoli-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_resolve_dec(int n)
+int	ft_resolve_uns(unsigned int n)
 {
 	int	i;
 

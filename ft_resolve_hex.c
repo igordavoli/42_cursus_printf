@@ -6,7 +6,7 @@
 /*   By: idavoli- <idavoli-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 03:30:00 by idavoli-          #+#    #+#             */
-/*   Updated: 2021/10/13 01:19:50 by idavoli-         ###   ########.fr       */
+/*   Updated: 2021/10/13 01:50:35 by idavoli-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,10 @@ int	ft_resolve_hex(unsigned int n, int is_upper)
 
 	i = 1;
 	ft_putnbr_hex(n, is_upper);
-	while (n /= 16)
+	while (n)
+	{
 		i++;
+		n /= 16;
+	}
 	return (i);
 }

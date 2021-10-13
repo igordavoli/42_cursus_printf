@@ -6,7 +6,7 @@
 /*   By: idavoli- <idavoli-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 22:17:34 by idavoli-          #+#    #+#             */
-/*   Updated: 2021/10/13 01:19:33 by idavoli-         ###   ########.fr       */
+/*   Updated: 2021/10/13 01:54:12 by idavoli-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,16 +20,16 @@ void	ft_putchar(char c)
 int	ft_putstr_c(char *s)
 {
 	int	i;
+
 	i = 0;
 	while (s[i])
 		ft_putchar(s[i++]);
 	return (i);
 }
 
-
 void	ft_putnbr_hex(unsigned int n, int is_upper)
 {
-	char c;
+	char	c;
 
 	if (n < 16)
 	{
@@ -40,7 +40,6 @@ void	ft_putnbr_hex(unsigned int n, int is_upper)
 			c += '0';
 		if (c >= 'a' && is_upper)
 			c -= 32;
-
 		ft_putchar(c);
 	}
 	else
