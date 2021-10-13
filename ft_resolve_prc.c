@@ -1,51 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_utils.c                                  :+:      :+:    :+:   */
+/*   ft_resolve_prc.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: idavoli- <idavoli-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/12 22:17:34 by idavoli-          #+#    #+#             */
-/*   Updated: 2021/10/13 01:19:33 by idavoli-         ###   ########.fr       */
+/*   Created: 2021/10/11 04:36:29 by idavoli-          #+#    #+#             */
+/*   Updated: 2021/10/12 21:36:22 by idavoli-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_putchar(char c)
+int	ft_resolve_prc(void)
 {
-	write(1, &c, 1);
-}
-
-int	ft_putstr_c(char *s)
-{
-	int	i;
-	i = 0;
-	while (s[i])
-		ft_putchar(s[i++]);
-	return (i);
-}
-
-
-void	ft_putnbr_hex(unsigned int n, int is_upper)
-{
-	char c;
-
-	if (n < 16)
-	{
-		c = n;
-		if (n > 9 )
-			c += 87;
-		else
-			c += '0';
-		if (c >= 'a' && is_upper)
-			c -= 32;
-
-		ft_putchar(c);
-	}
-	else
-	{
-		ft_putnbr_hex (n / 16, is_upper);
-		ft_putnbr_hex (n % 16, is_upper);
-	}
+	ft_putchar_fd('%', 1);
+	return (1);
 }

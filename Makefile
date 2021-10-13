@@ -6,7 +6,7 @@
 #    By: idavoli- <idavoli-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/10 15:35:57 by idavoli-          #+#    #+#              #
-#    Updated: 2021/10/11 04:38:47 by idavoli-         ###   ########.fr        #
+#    Updated: 2021/10/13 00:51:38 by idavoli-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,8 +15,13 @@ LIBFT=./libft/libft.a
 NAME=libftprintf.a
 
 SRCS= ft_printf.c \
+	ft_printf_utils.c \
 	ft_resolve_dec.c \
-	ft_resolve_str.c
+	ft_resolve_str.c \
+	ft_resolve_ptr.c \
+	ft_resolve_chr.c \
+	ft_resolve_prc.c \
+	ft_resolve_hex.c
 
 OBJS=${SRCS:.c=.o}
 
