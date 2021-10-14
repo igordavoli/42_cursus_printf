@@ -6,7 +6,7 @@
 /*   By: idavoli- <idavoli-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 03:30:00 by idavoli-          #+#    #+#             */
-/*   Updated: 2021/10/13 02:17:07 by idavoli-         ###   ########.fr       */
+/*   Updated: 2021/10/13 21:19:16 by idavoli-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	ft_resolve_uns(unsigned int n)
 {
 	int	i;
 
-	ft_putnbr_fd(n, 1);
+	ft_putnbr(n);
 	n /= 10;
 	i = 1;
 	while (n)

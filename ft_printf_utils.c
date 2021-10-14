@@ -6,13 +6,13 @@
 /*   By: idavoli- <idavoli-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 22:17:34 by idavoli-          #+#    #+#             */
-/*   Updated: 2021/10/13 01:54:12 by idavoli-         ###   ########.fr       */
+/*   Updated: 2021/10/13 21:20:26 by idavoli-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_putchar(char c)
+static void	ft_putchar(char c)
 {
 	write(1, &c, 1);
 }
@@ -46,5 +46,16 @@ void	ft_putnbr_hex(unsigned int n, int is_upper)
 	{
 		ft_putnbr_hex (n / 16, is_upper);
 		ft_putnbr_hex (n % 16, is_upper);
+	}
+}
+
+void	ft_putnbr(unsigned int n)
+{
+	if (n < 10)
+		ft_putchar_fd (n + '0', 1);
+	else
+	{
+		ft_putnbr (n / 10);
+		ft_putnbr (n % 10);
 	}
 }
