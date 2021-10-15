@@ -6,7 +6,7 @@
 /*   By: idavoli- <idavoli-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 22:17:34 by idavoli-          #+#    #+#             */
-/*   Updated: 2021/10/13 21:20:26 by idavoli-         ###   ########.fr       */
+/*   Updated: 2021/10/14 20:47:29 by idavoli-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	ft_putstr_c(char *s)
 	return (i);
 }
 
-void	ft_putnbr_hex(unsigned int n, int is_upper)
+void	ft_putnbr_hex(unsigned long long n, int is_upper)
 {
 	char	c;
 
