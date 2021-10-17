@@ -6,7 +6,7 @@
 /*   By: idavoli- <idavoli-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 01:54:47 by idavoli-          #+#    #+#             */
-/*   Updated: 2021/10/16 18:56:20 by idavoli-         ###   ########.fr       */
+/*   Updated: 2021/10/16 23:52:44 by idavoli-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static int	ft_select_format(char c, va_list args, t_flags flags)
 	if (c == 'd' || c == 'i')
 		len = ft_resolve_dec(va_arg(args, int), flags);
 	if (c == 'u')
-		len = ft_resolve_uns(va_arg(args, unsigned int));
+		len = ft_resolve_uns(va_arg(args, unsigned int), flags);
 	if (c == 'p')
 		len = ft_resolve_ptr(va_arg(args, unsigned long long));
 	if (c == 'x')

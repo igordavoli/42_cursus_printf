@@ -6,7 +6,7 @@
 /*   By: idavoli- <idavoli-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/15 23:38:59 by idavoli-          #+#    #+#             */
-/*   Updated: 2021/10/16 21:20:51 by idavoli-         ###   ########.fr       */
+/*   Updated: 2021/10/16 22:37:49 by idavoli-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,13 @@ static char *ft_resolve_space(char *str, t_flags *flags)
 		flags->f_space = 1;
 	return (str - 1);
 }
+static char *ft_resolve_zero(char *str, t_flags *flags)
+{
+	flags->f_zero = ft_atoi(str);
+	while (ft_isdigit(*str))
+	str++;
+	return (str - 1);
+}
 
 char	*ft_flg_get(t_flags *flags, char *str)
 {
@@ -48,7 +55,7 @@ char	*ft_flg_get(t_flags *flags, char *str)
 		if (*str == '-')
 			flags->f_minus = 1;
 		if (*str == '0')
-			flags->f_minus = 1;
+			str = ft_resolve_zero(str + 1, flags);
 		if (*str == '.')
 			flags->p_dot = 1;
 		if (*str == '#')

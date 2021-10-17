@@ -6,7 +6,7 @@
 /*   By: idavoli- <idavoli-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/14 23:44:54 by idavoli-          #+#    #+#             */
-/*   Updated: 2021/10/16 19:37:43 by idavoli-         ###   ########.fr       */
+/*   Updated: 2021/10/17 00:10:40 by idavoli-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,14 @@ int		ft_resolve_str(char *str, t_flags flags);
 int		ft_resolve_dec(int n, t_flags flags);
 int		ft_resolve_hex(unsigned long long n, int is_upper, t_flags flags);
 int		ft_resolve_ptr(unsigned long long ptr);
-int		ft_resolve_uns(unsigned int n);
+int		ft_resolve_uns(unsigned int n, t_flags flags);
 int		ft_resolve_prc(void);
-void	ft_putnbr_hex(unsigned long long n, int is_upper);
-void	ft_putnbr(unsigned int n);
+void	ft_putnbr_hex(unsigned long long n, int is_upper, int n_zeros);
+void	ft_putuns_zero(unsigned int n, int n_zeros);
 
 t_flags	ft_flg_init(void);
 char	*ft_flg_get(t_flags *flags, char *src);
+
+void	ft_putnbr_zero(int n, int n_zeros);
 
 #endif
