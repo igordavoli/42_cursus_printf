@@ -6,7 +6,7 @@
 /*   By: idavoli- <idavoli-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/15 23:38:59 by idavoli-          #+#    #+#             */
-/*   Updated: 2021/10/16 22:37:49 by idavoli-         ###   ########.fr       */
+/*   Updated: 2021/10/17 00:46:04 by idavoli-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,20 +31,21 @@ static int	ft_is_type(char c)
 		|| c == 'i' || c == 'u' || c == 'x' || c == 'X' || c == '%');
 }
 
-static char *ft_resolve_space(char *str, t_flags *flags)
+static char	*ft_resolve_space(char *str, t_flags *flags)
 {
 	flags->f_space = ft_atoi(str);
 	while (ft_isdigit(*str))
-	str++;
+		str++;
 	if (!flags->f_space && (*str == 'd' || *str == 'i'))
 		flags->f_space = 1;
 	return (str - 1);
 }
-static char *ft_resolve_zero(char *str, t_flags *flags)
+
+static char	*ft_resolve_zero(char *str, t_flags *flags)
 {
 	flags->f_zero = ft_atoi(str);
 	while (ft_isdigit(*str))
-	str++;
+		str++;
 	return (str - 1);
 }
 

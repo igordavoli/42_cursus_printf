@@ -6,15 +6,15 @@
 /*   By: idavoli- <idavoli-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 03:30:00 by idavoli-          #+#    #+#             */
-/*   Updated: 2021/10/17 00:02:44 by idavoli-         ###   ########.fr       */
+/*   Updated: 2021/10/17 00:51:22 by idavoli-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int ft_num_len(unsigned int n)
+static int	ft_num_len(unsigned int n)
 {
-	int i;
+	int	i;
 
 	i = 1;
 	if (n < 0)
@@ -33,7 +33,7 @@ static int ft_num_len(unsigned int n)
 
 int	ft_resolve_uns(unsigned int n, t_flags flags)
 {
-int n_zeros;
+	int	n_zeros;
 	int	len;
 
 	n_zeros = 0;

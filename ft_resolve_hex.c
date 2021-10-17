@@ -6,16 +6,15 @@
 /*   By: idavoli- <idavoli-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 03:30:00 by idavoli-          #+#    #+#             */
-/*   Updated: 2021/10/17 00:18:00 by idavoli-         ###   ########.fr       */
+/*   Updated: 2021/10/17 00:46:52 by idavoli-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-
-static int ft_num_len(unsigned int n)
+static int	ft_num_len(unsigned int n)
 {
-	int i;
+	int	i;
 
 	i = 1;
 	if (n < 0)
@@ -36,7 +35,6 @@ int	ft_resolve_hex(unsigned long long n, int is_upper, t_flags flags)
 {
 	int	len;
 	int	n_zeros;
-
 
 	len = 0;
 	n_zeros = 0;

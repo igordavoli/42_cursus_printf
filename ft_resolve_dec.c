@@ -6,13 +6,13 @@
 /*   By: idavoli- <idavoli-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 03:30:00 by idavoli-          #+#    #+#             */
-/*   Updated: 2021/10/16 23:49:33 by idavoli-         ###   ########.fr       */
+/*   Updated: 2021/10/17 00:44:47 by idavoli-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int	ft_handle_flgs(int n,t_flags flags)
+static int	ft_handle_flgs(int n, t_flags flags)
 {
 	if (flags.f_plus && n >= 0)
 	{
@@ -27,9 +27,9 @@ static int	ft_handle_flgs(int n,t_flags flags)
 	return (0);
 }
 
-static int ft_num_len(int n)
+static int	ft_num_len(int n)
 {
-	int i;
+	int	i;
 
 	i = 1;
 	if (n < 0)
@@ -48,13 +48,12 @@ static int ft_num_len(int n)
 
 int	ft_resolve_dec(int n, t_flags flags)
 {
-	int n_zeros;
+	int	n_zeros;
 	int	len;
 
 	n_zeros = 0;
 	len = ft_num_len(n);
 	len += ft_handle_flgs(n, flags);
-
 	if (flags.f_zero > len)
 		n_zeros = flags.f_zero - len;
 	ft_putnbr_zero(n, n_zeros);

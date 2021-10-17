@@ -6,7 +6,7 @@
 /*   By: idavoli- <idavoli-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 04:36:29 by idavoli-          #+#    #+#             */
-/*   Updated: 2021/10/16 21:14:19 by idavoli-         ###   ########.fr       */
+/*   Updated: 2021/10/17 00:50:28 by idavoli-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,8 @@
 
 static void	ft_handle_flgs(int str_len, t_flags flags)
 {
-	int i;
+	int	i;
 
-	// printf("\n1aaaaa %d %s\n", flags.f_space, str);
 	i = 0;
 	if (flags.f_space)
 	{
@@ -27,9 +26,8 @@ static void	ft_handle_flgs(int str_len, t_flags flags)
 
 int	ft_resolve_str(char *str, t_flags flags)
 {
-	int str_len;
+	int	str_len;
 	int	len;
-
 
 	if (!str)
 	{
@@ -37,7 +35,7 @@ int	ft_resolve_str(char *str, t_flags flags)
 		return (6);
 	}
 	str_len = ft_strlen(str);
-	if(flags.f_space > str_len)
+	if (flags.f_space > str_len)
 	{
 		len = flags.f_space;
 		ft_handle_flgs(str_len, flags);
