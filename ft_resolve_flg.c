@@ -6,7 +6,7 @@
 /*   By: idavoli- <idavoli-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/15 23:38:59 by idavoli-          #+#    #+#             */
-/*   Updated: 2021/10/16 19:45:12 by idavoli-         ###   ########.fr       */
+/*   Updated: 2021/10/16 21:20:51 by idavoli-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ static char *ft_resolve_space(char *str, t_flags *flags)
 	flags->f_space = ft_atoi(str);
 	while (ft_isdigit(*str))
 	str++;
+	if (!flags->f_space && (*str == 'd' || *str == 'i'))
+		flags->f_space = 1;
 	return (str - 1);
 }
 

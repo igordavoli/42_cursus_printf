@@ -6,7 +6,7 @@
 /*   By: idavoli- <idavoli-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 04:36:29 by idavoli-          #+#    #+#             */
-/*   Updated: 2021/10/16 20:02:10 by idavoli-         ###   ########.fr       */
+/*   Updated: 2021/10/16 21:14:19 by idavoli-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,13 @@ int	ft_resolve_str(char *str, t_flags flags)
 	int str_len;
 	int	len;
 
-	str_len = ft_strlen(str);
+
 	if (!str)
 	{
 		ft_putstr_fd("(null)", 1);
 		return (6);
 	}
+	str_len = ft_strlen(str);
 	if(flags.f_space > str_len)
 	{
 		len = flags.f_space;

@@ -1,7 +1,7 @@
 .vscode/
 en.subject.pdf
-# # main.c
+main.c
 # # libft/
-# tester
-# *.o
-# # *.a
+tester
+*.o
+*.a
