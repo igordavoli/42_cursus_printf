@@ -1,30 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_resolve_ptr.c                                   :+:      :+:    :+:   */
+/*   ft_put_space.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: idavoli- <idavoli-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/11 03:30:00 by idavoli-          #+#    #+#             */
-/*   Updated: 2021/10/17 15:10:07 by idavoli-         ###   ########.fr       */
+/*   Created: 2021/10/17 15:09:11 by idavoli-          #+#    #+#             */
+/*   Updated: 2021/10/19 09:26:49 by idavoli-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_resolve_ptr(unsigned long long ptr, t_flags flags)
+int	ft_put_space(int spaces, int str_len)
 {
-	int	i;
+	int	n_spaces;
+	int	len;
 
-	ft_putstr_fd("0x", 1);
-	ft_putnbr_hex(ptr, 0, 0);
-	ptr /= 16;
-	i = 3;
-	while (ptr)
+	if (!spaces)
+		return (0);
+	spaces--;
+	n_spaces = spaces - (str_len - 1);
+	if (n_spaces > 0)
 	{
-		i++;
-		ptr /= 16;
+		len = n_spaces;
+		while (n_spaces)
+		{
+			ft_putchar_fd(' ', 1);
+			n_spaces--;
+		}
+		return (len);
 	}
-	i += ft_put_space(flags.f_minus, i);
-	return (i);
+	return (0);
 }

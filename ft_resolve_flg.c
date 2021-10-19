@@ -6,7 +6,7 @@
 /*   By: idavoli- <idavoli-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/15 23:38:59 by idavoli-          #+#    #+#             */
-/*   Updated: 2021/10/17 00:46:04 by idavoli-         ###   ########.fr       */
+/*   Updated: 2021/10/19 09:27:24 by idavoli-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ t_flags	ft_flg_init(void)
 	flags.f_hash = 0;
 	flags.f_space = 0;
 	flags.f_plus = 0;
+	flags.f_width = 0;
 	return (flags);
 }
 
@@ -49,22 +50,40 @@ static char	*ft_resolve_zero(char *str, t_flags *flags)
 	return (str - 1);
 }
 
+static char	*ft_resolve_minus(char *str, t_flags *flags)
+{
+	flags->f_minus = ft_atoi(str);
+	while (ft_isdigit(*str))
+		str++;
+	return (str - 1);
+}
+
+static char	*ft_resolve_width(char *str, t_flags *flags)
+{
+	flags->f_width = ft_atoi(str);
+	while (ft_isdigit(*str))
+		str++;
+	return (str - 1);
+}
+
 char	*ft_flg_get(t_flags *flags, char *str)
 {
 	while (!ft_is_type(*str))
 	{
 		if (*str == '-')
-			flags->f_minus = 1;
-		if (*str == '0')
+			str = ft_resolve_minus(str + 1, flags);
+		else if (*str == '0')
 			str = ft_resolve_zero(str + 1, flags);
-		if (*str == '.')
+		else if (*str == '.')
 			flags->p_dot = 1;
-		if (*str == '#')
+		else if (*str == '#')
 			flags->f_hash = 1;
-		if (*str == ' ')
+		else if (*str == ' ')
 			str = ft_resolve_space(str + 1, flags);
-		if (*str == '+')
+		else if (*str == '+')
 			flags->f_plus = 1;
+		else if (ft_isdigit(*str) && *str != '0')
+			str = ft_resolve_width(str, flags);
 		str++;
 	}
 	return (str);

@@ -6,14 +6,25 @@
 /*   By: idavoli- <idavoli-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 04:36:29 by idavoli-          #+#    #+#             */
-/*   Updated: 2021/10/12 21:19:50 by idavoli-         ###   ########.fr       */
+/*   Updated: 2021/10/17 16:05:24 by idavoli-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_resolve_chr(char c)
+static int	ft_put_space_chr(int n_spaces)
+{
+	while (n_spaces)
+	{
+		ft_putchar_fd(' ', 1);
+		n_spaces--;
+	}
+	return (0);
+}
+
+int	ft_resolve_chr(char c, t_flags flags)
 {
 	ft_putchar_fd(c, 1);
-	return (1);
+	ft_put_space_chr(flags.f_minus - 1);
+	return (1 + (flags.f_minus - 1));
 }
