@@ -6,7 +6,7 @@
 /*   By: idavoli- <idavoli-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/15 23:38:59 by idavoli-          #+#    #+#             */
-/*   Updated: 2021/10/19 09:27:24 by idavoli-         ###   ########.fr       */
+/*   Updated: 2021/10/19 09:48:52 by idavoli-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ t_flags	ft_flg_init(void)
 
 	flags.f_minus = 0;
 	flags.f_zero = 0;
-	flags.p_dot = 0;
+	flags.p_dot = -1;
 	flags.f_hash = 0;
 	flags.f_space = 0;
 	flags.f_plus = 0;
@@ -66,6 +66,14 @@ static char	*ft_resolve_width(char *str, t_flags *flags)
 	return (str - 1);
 }
 
+static char	*ft_resolve_dot(char *str, t_flags *flags)
+{
+	flags->p_dot = ft_atoi(str);
+	while (ft_isdigit(*str))
+		str++;
+	return (str - 1);
+}
+
 char	*ft_flg_get(t_flags *flags, char *str)
 {
 	while (!ft_is_type(*str))
@@ -75,7 +83,7 @@ char	*ft_flg_get(t_flags *flags, char *str)
 		else if (*str == '0')
 			str = ft_resolve_zero(str + 1, flags);
 		else if (*str == '.')
-			flags->p_dot = 1;
+			str = ft_resolve_dot(str + 1, flags);
 		else if (*str == '#')
 			flags->f_hash = 1;
 		else if (*str == ' ')

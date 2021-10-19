@@ -6,11 +6,21 @@
 /*   By: idavoli- <idavoli-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 04:36:29 by idavoli-          #+#    #+#             */
-/*   Updated: 2021/10/19 09:29:33 by idavoli-         ###   ########.fr       */
+/*   Updated: 2021/10/19 19:25:24 by idavoli-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+static int	ft_putnstr(char *str, int n)
+{
+	char	*s;
+
+	s = str;
+	while (n-- && *str)
+		ft_putchar_fd(*str++, 1);
+	return (str - s);
+}
 
 static int	ft_put_space_str(int spaces, int str_len)
 {
@@ -64,7 +74,10 @@ int	ft_resolve_str(char *str, t_flags flags)
 	}
 	else
 		len = str_len;
-	ft_putstr_fd(str, 1);
+	if (flags.p_dot >= 0 && ft_strlen(str))
+		len = ft_putnstr(str, flags.p_dot);
+	else
+		ft_putstr_fd(str, 1);
 	len += ft_put_space_str(flags.f_minus, str_len);
 	return (len);
 }
