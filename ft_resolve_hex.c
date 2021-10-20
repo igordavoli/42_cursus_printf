@@ -6,7 +6,7 @@
 /*   By: idavoli- <idavoli-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 03:30:00 by idavoli-          #+#    #+#             */
-/*   Updated: 2021/10/19 20:48:41 by idavoli-         ###   ########.fr       */
+/*   Updated: 2021/10/19 21:07:08 by idavoli-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static int	ft_num_len(unsigned int n)
 	int	i;
 
 	i = 1;
- 	n /= 16;
+	n /= 16;
 	while (n)
 	{
 		i++;

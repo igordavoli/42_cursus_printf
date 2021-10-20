@@ -6,7 +6,7 @@
 /*   By: idavoli- <idavoli-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 04:36:29 by idavoli-          #+#    #+#             */
-/*   Updated: 2021/10/19 20:50:52 by idavoli-         ###   ########.fr       */
+/*   Updated: 2021/10/19 21:06:30 by idavoli-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,16 +45,16 @@ static int	ft_put_space_str(int spaces, int str_len)
 
 static int	ft_handle_f_space(int spaces, int str_len)
 {
-if (spaces > str_len)
+	if (spaces > str_len)
 	{
-		ft_put_space_str(spaces, str_len );
+		ft_put_space_str(spaces, str_len);
 		return (spaces);
 	}
 	else
 		return (str_len);
 }
 
-static void ft_print_str(char *str, int *len, int n)
+static void	ft_print_str(char *str, int *len, int n)
 {
 	if (n >= 0 && ft_strlen(str))
 		*len = ft_putnstr(str, n);
