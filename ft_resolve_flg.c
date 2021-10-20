@@ -6,7 +6,7 @@
 /*   By: idavoli- <idavoli-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/15 23:38:59 by idavoli-          #+#    #+#             */
-/*   Updated: 2021/10/19 09:48:52 by idavoli-         ###   ########.fr       */
+/*   Updated: 2021/10/19 19:33:52 by idavoli-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,33 +42,9 @@ static char	*ft_resolve_space(char *str, t_flags *flags)
 	return (str - 1);
 }
 
-static char	*ft_resolve_zero(char *str, t_flags *flags)
+static char	*ft_get_value(char *str, int *flag)
 {
-	flags->f_zero = ft_atoi(str);
-	while (ft_isdigit(*str))
-		str++;
-	return (str - 1);
-}
-
-static char	*ft_resolve_minus(char *str, t_flags *flags)
-{
-	flags->f_minus = ft_atoi(str);
-	while (ft_isdigit(*str))
-		str++;
-	return (str - 1);
-}
-
-static char	*ft_resolve_width(char *str, t_flags *flags)
-{
-	flags->f_width = ft_atoi(str);
-	while (ft_isdigit(*str))
-		str++;
-	return (str - 1);
-}
-
-static char	*ft_resolve_dot(char *str, t_flags *flags)
-{
-	flags->p_dot = ft_atoi(str);
+	*flag = ft_atoi(str);
 	while (ft_isdigit(*str))
 		str++;
 	return (str - 1);
@@ -79,11 +55,11 @@ char	*ft_flg_get(t_flags *flags, char *str)
 	while (!ft_is_type(*str))
 	{
 		if (*str == '-')
-			str = ft_resolve_minus(str + 1, flags);
+			str = ft_get_value(str + 1, &flags->f_minus);
 		else if (*str == '0')
-			str = ft_resolve_zero(str + 1, flags);
+			str = ft_get_value(str + 1, &flags->f_zero);
 		else if (*str == '.')
-			str = ft_resolve_dot(str + 1, flags);
+			str = ft_get_value(str + 1, &flags->p_dot);
 		else if (*str == '#')
 			flags->f_hash = 1;
 		else if (*str == ' ')
@@ -91,7 +67,7 @@ char	*ft_flg_get(t_flags *flags, char *str)
 		else if (*str == '+')
 			flags->f_plus = 1;
 		else if (ft_isdigit(*str) && *str != '0')
-			str = ft_resolve_width(str, flags);
+			str = ft_get_value(str, &flags->f_width);
 		str++;
 	}
 	return (str);

@@ -6,7 +6,7 @@
 /*   By: idavoli- <idavoli-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 03:30:00 by idavoli-          #+#    #+#             */
-/*   Updated: 2021/10/17 15:10:07 by idavoli-         ###   ########.fr       */
+/*   Updated: 2021/10/19 20:48:50 by idavoli-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,6 @@ int	ft_resolve_ptr(unsigned long long ptr, t_flags flags)
 		i++;
 		ptr /= 16;
 	}
-	i += ft_put_space(flags.f_minus, i);
+	ft_put_space(flags.f_minus, &i);
 	return (i);
 }

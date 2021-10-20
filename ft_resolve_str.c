@@ -6,7 +6,7 @@
 /*   By: idavoli- <idavoli-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 04:36:29 by idavoli-          #+#    #+#             */
-/*   Updated: 2021/10/19 19:25:24 by idavoli-         ###   ########.fr       */
+/*   Updated: 2021/10/19 20:50:52 by idavoli-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,16 +43,23 @@ static int	ft_put_space_str(int spaces, int str_len)
 	return (0);
 }
 
-static void	ft_handle_flgs(int str_len, t_flags flags)
+static int	ft_handle_f_space(int spaces, int str_len)
 {
-	int	i;
-
-	i = 0;
-	if (flags.f_space)
+if (spaces > str_len)
 	{
-		while (flags.f_space - i++ - str_len)
-			ft_putchar_fd(' ', 1);
+		ft_put_space_str(spaces, str_len );
+		return (spaces);
 	}
+	else
+		return (str_len);
+}
+
+static void ft_print_str(char *str, int *len, int n)
+{
+	if (n >= 0 && ft_strlen(str))
+		*len = ft_putnstr(str, n);
+	else
+		ft_putstr_fd(str, 1);
 }
 
 int	ft_resolve_str(char *str, t_flags flags)
@@ -66,18 +73,9 @@ int	ft_resolve_str(char *str, t_flags flags)
 		return (6);
 	}
 	str_len = ft_strlen(str);
-	str_len += ft_put_space(flags.f_width, str_len);
-	if (flags.f_space > str_len)
-	{
-		len = flags.f_space;
-		ft_handle_flgs(str_len, flags);
-	}
-	else
-		len = str_len;
-	if (flags.p_dot >= 0 && ft_strlen(str))
-		len = ft_putnstr(str, flags.p_dot);
-	else
-		ft_putstr_fd(str, 1);
+	ft_put_space(flags.f_width, &str_len);
+	len = ft_handle_f_space(flags.f_space, str_len);
+	ft_print_str(str, &len, flags.p_dot);
 	len += ft_put_space_str(flags.f_minus, str_len);
 	return (len);
 }

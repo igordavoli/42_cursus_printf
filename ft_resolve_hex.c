@@ -6,7 +6,7 @@
 /*   By: idavoli- <idavoli-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 03:30:00 by idavoli-          #+#    #+#             */
-/*   Updated: 2021/10/19 19:25:50 by idavoli-         ###   ########.fr       */
+/*   Updated: 2021/10/19 20:48:41 by idavoli-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static int	ft_num_len(unsigned int n)
 	int	i;
 
 	i = 1;
-	n /= 16;
+ 	n /= 16;
 	while (n)
 	{
 		i++;
@@ -45,6 +45,6 @@ int	ft_resolve_hex(unsigned long long n, int is_upper, t_flags flags)
 		len += 2;
 	}
 	ft_putnbr_hex(n, is_upper, n_zeros);
-	len += ft_put_space(flags.f_minus, len);
+	ft_put_space(flags.f_minus, &len);
 	return (len + n_zeros);
 }
