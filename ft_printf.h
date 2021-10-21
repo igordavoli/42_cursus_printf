@@ -6,7 +6,7 @@
 /*   By: idavoli- <idavoli-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/14 23:44:54 by idavoli-          #+#    #+#             */
-/*   Updated: 2021/10/19 20:47:25 by idavoli-         ###   ########.fr       */
+/*   Updated: 2021/10/19 21:14:41 by idavoli-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	ft_putuns_zero(unsigned int n, int n_zeros);
 t_flags	ft_flg_init(void);
 char	*ft_flg_get(t_flags *flags, char *src);
 
-void	ft_putnbr_zero(int n, int n_zeros);
+void	ft_putnbr_zero(int n, int n_zeros, int len);
 void	ft_put_space(int spaces, int *str_len);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: idavoli- <idavoli-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 03:30:00 by idavoli-          #+#    #+#             */
-/*   Updated: 2021/10/19 21:00:57 by idavoli-         ###   ########.fr       */
+/*   Updated: 2021/10/21 02:17:14 by idavoli-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,14 +50,20 @@ int	ft_resolve_dec(int n, t_flags flags)
 {
 	int	n_zeros;
 	int	len;
+	int	is_neg;
 
 	n_zeros = 0;
+	is_neg = 0;
+	if (n < 0)
+		is_neg = 1;
 	len = ft_num_len(n);
 	ft_put_space(flags.f_width, &len);
 	len += ft_handle_flgs(n, flags);
 	if (flags.f_zero > len)
 		n_zeros = flags.f_zero - len;
-	ft_putnbr_zero(n, n_zeros);
+	if (flags.p_dot > len - 1)
+		n_zeros = (flags.p_dot + is_neg) - len ;
+	ft_putnbr_zero(n, n_zeros, len);
 	ft_put_space(flags.f_minus, &len);
 	return (len + n_zeros);
 }

@@ -6,7 +6,7 @@
 #    By: idavoli- <idavoli-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/24 20:47:53 by vaferrei          #+#    #+#              #
-#    Updated: 2021/10/16 20:45:45 by idavoli-         ###   ########.fr        #
+#    Updated: 2021/10/21 00:49:30 by idavoli-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,41 +23,44 @@ SRCS = ft_printf.c \
 	ft_resolve_prc.c \
 	ft_resolve_hex.c \
 	ft_resolve_uns.c \
-	ft_resolve_flg.c
+	ft_resolve_flg.c \
+	ft_put_space.c
 
 
-OBJS	= ${SRCS:.c=.o}
+OBJS = ${SRCS:.c=.o}
 
 
-CC		= clang
+CC = gcc
 
-CFLAGS	= -Wall -Wextra -Werror -g
+CFLAGS = -Wall -Wextra -Werror -g
 
 .c.o:
-			${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
+	${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
 
-${NAME}:	${OBJS}
-			$(MAKE) -C ./libft
-			cp libft/libft.a $(NAME)
-			ar -rcs ${NAME} ${OBJS}
+${NAME}: ${OBJS}
+	$(MAKE) -C ./libft
+	@cp libft/libft.a $(NAME)
+	ar -rcs ${NAME} ${OBJS}
 
-all:		${NAME}
+all:	${NAME}
 
 clean:
-		$(MAKE) clean -C ./libft
-		rm -f ${OBJS}
-		rm -f ${BOBJS}
+	@$(MAKE) clean -C ./libft
+	@rm -f ${OBJS}
+	@rm -f ${BOBJS}
 
 fclean: clean
-		$(MAKE) fclean -C ./libft
-		rm -f ${NAME}
+	@$(MAKE) fclean -C ./libft
+	@rm -f ${NAME}
+	@rm a.out
 
 re: fclean all
 
 bonus: all
 
 test: all
-	${CC} main.c libftprintf.a libft/libft.a -o teste
-	./teste
+	${CC} -g main.c libftprintf.a libft/libft.a
+	./a.out
+	@make fclean
 
 .PHONY: all, bonus, clean, fclean, re

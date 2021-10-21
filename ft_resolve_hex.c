@@ -6,7 +6,7 @@
 /*   By: idavoli- <idavoli-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 03:30:00 by idavoli-          #+#    #+#             */
-/*   Updated: 2021/10/19 21:07:08 by idavoli-         ###   ########.fr       */
+/*   Updated: 2021/10/21 01:45:35 by idavoli-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ int	ft_resolve_hex(unsigned long long n, int is_upper, t_flags flags)
 	len = ft_num_len(n);
 	if (flags.f_zero > len)
 		n_zeros = flags.f_zero - len;
+	if (flags.p_dot > len - 1)
+		n_zeros = flags.p_dot - len ;
 	if (flags.f_hash && n)
 	{
 		if (is_upper)

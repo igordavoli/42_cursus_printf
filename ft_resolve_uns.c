@@ -6,7 +6,7 @@
 /*   By: idavoli- <idavoli-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 03:30:00 by idavoli-          #+#    #+#             */
-/*   Updated: 2021/10/19 20:50:37 by idavoli-         ###   ########.fr       */
+/*   Updated: 2021/10/21 01:43:35 by idavoli-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ int	ft_resolve_uns(unsigned int n, t_flags flags)
 	len = ft_num_len(n);
 	if (flags.f_zero > len)
 		n_zeros = flags.f_zero - len;
+	if (flags.p_dot > len - 1)
+		n_zeros = flags.p_dot - len ;
 	ft_putuns_zero(n, n_zeros);
 	ft_put_space(flags.f_minus, &len);
 	return (len + n_zeros);

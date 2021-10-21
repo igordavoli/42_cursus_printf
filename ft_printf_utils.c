@@ -6,7 +6,7 @@
 /*   By: idavoli- <idavoli-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 22:17:34 by idavoli-          #+#    #+#             */
-/*   Updated: 2021/10/17 00:43:33 by idavoli-         ###   ########.fr       */
+/*   Updated: 2021/10/21 00:57:58 by idavoli-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,10 @@ void	ft_putuns_zero(unsigned int n, int n_zeros)
 	}
 }
 
-void	ft_putnbr_zero(int n, int n_zeros)
+void	ft_putnbr_zero(int n, int n_zeros, int len)
 {
+	if (!len--)
+		return ;
 	if (n == -2147483648)
 	{
 		ft_putchar_fd('-', 1);
@@ -87,7 +89,7 @@ void	ft_putnbr_zero(int n, int n_zeros)
 		ft_putchar_fd(n + '0', 1);
 	else
 	{
-		ft_putnbr_zero(n / 10, n_zeros);
-		ft_putnbr_zero(n % 10, n_zeros);
+		ft_putnbr_zero(n / 10, n_zeros, len);
+		ft_putnbr_zero(n % 10, n_zeros, len);
 	}
 }
