@@ -6,13 +6,13 @@
 /*   By: idavoli- <idavoli-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/17 15:09:11 by idavoli-          #+#    #+#             */
-/*   Updated: 2021/10/19 20:52:30 by idavoli-         ###   ########.fr       */
+/*   Updated: 2021/10/22 22:40:42 by idavoli-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_put_space(int spaces, int *str_len)
+int	ft_put_space(int spaces, int str_len)
 {
 	int	n_spaces;
 	int	len;
@@ -20,7 +20,7 @@ void	ft_put_space(int spaces, int *str_len)
 	if (spaces)
 	{
 		spaces--;
-		n_spaces = spaces - (*str_len - 1);
+		n_spaces = spaces - (str_len - 1);
 		if (n_spaces > 0)
 		{
 			len = n_spaces;
@@ -29,7 +29,8 @@ void	ft_put_space(int spaces, int *str_len)
 				ft_putchar_fd(' ', 1);
 				n_spaces--;
 			}
-			*str_len += len;
+			return (len);
 		}
 	}
+	return (0);
 }

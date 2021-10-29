@@ -6,7 +6,7 @@
 /*   By: idavoli- <idavoli-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/14 23:44:54 by idavoli-          #+#    #+#             */
-/*   Updated: 2021/10/19 21:14:41 by idavoli-         ###   ########.fr       */
+/*   Updated: 2021/10/28 22:34:35 by idavoli-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,6 @@ t_flags	ft_flg_init(void);
 char	*ft_flg_get(t_flags *flags, char *src);
 
 void	ft_putnbr_zero(int n, int n_zeros, int len);
-void	ft_put_space(int spaces, int *str_len);
+int	ft_put_space(int spaces, int str_len);
 
 #endif

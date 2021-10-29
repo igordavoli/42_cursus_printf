@@ -6,7 +6,7 @@
 /*   By: idavoli- <idavoli-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 22:17:34 by idavoli-          #+#    #+#             */
-/*   Updated: 2021/10/21 00:57:58 by idavoli-         ###   ########.fr       */
+/*   Updated: 2021/10/28 22:58:07 by idavoli-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,24 @@
 
 int	ft_put_zeros(int n_zeros)
 {
-	while (n_zeros)
+	while (n_zeros > 0)
 	{
 		ft_putchar_fd('0', 1);
 		n_zeros--;
 	}
 	return (0);
+}
+
+void	ft_putuns_zero(unsigned int n, int n_zeros)
+{
+	n_zeros = ft_put_zeros(n_zeros);
+	if (n < 10)
+		ft_putchar_fd(n + '0', 1);
+	else
+	{
+		ft_putuns_zero(n / 10, n_zeros);
+		ft_putuns_zero(n % 10, n_zeros);
+	}
 }
 
 int	ft_putstr_c(char *s)
@@ -55,17 +67,7 @@ void	ft_putnbr_hex(unsigned long long n, int is_upper, int n_zeros)
 	}
 }
 
-void	ft_putuns_zero(unsigned int n, int n_zeros)
-{
-	n_zeros = ft_put_zeros(n_zeros);
-	if (n < 10)
-		ft_putchar_fd(n + '0', 1);
-	else
-	{
-		ft_putuns_zero(n / 10, n_zeros);
-		ft_putuns_zero(n % 10, n_zeros);
-	}
-}
+
 
 void	ft_putnbr_zero(int n, int n_zeros, int len)
 {

@@ -6,7 +6,7 @@
 /*   By: idavoli- <idavoli-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 03:30:00 by idavoli-          #+#    #+#             */
-/*   Updated: 2021/10/21 02:17:14 by idavoli-         ###   ########.fr       */
+/*   Updated: 2021/10/28 23:12:16 by idavoli-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,21 +49,38 @@ static int	ft_num_len(int n)
 int	ft_resolve_dec(int n, t_flags flags)
 {
 	int	n_zeros;
+	int	num_len ;
 	int	len;
 	int	is_neg;
 
 	n_zeros = 0;
 	is_neg = 0;
+	len = 0;
 	if (n < 0)
 		is_neg = 1;
-	len = ft_num_len(n);
-	ft_put_space(flags.f_width, &len);
+	num_len = ft_num_len(n);
+
+	if (flags.f_zero > flags.p_dot && flags.p_dot < num_len
+		&& flags.p_dot != -1)
+		flags.f_width = flags.f_zero;
+
+	if (flags.f_zero > flags.p_dot && flags.p_dot > num_len
+		&& flags.p_dot != -1)
+		flags.f_width = flags.f_zero - (flags.p_dot - num_len + is_neg);
+
+	if (!n && !flags.p_dot)
+		num_len = 0;
+	len += ft_put_space(flags.f_width, num_len);
 	len += ft_handle_flgs(n, flags);
-	if (flags.f_zero > len)
-		n_zeros = flags.f_zero - len;
-	if (flags.p_dot > len - 1)
-		n_zeros = (flags.p_dot + is_neg) - len ;
-	ft_putnbr_zero(n, n_zeros, len);
-	ft_put_space(flags.f_minus, &len);
-	return (len + n_zeros);
+	if (flags.f_zero > len + num_len)
+		n_zeros = flags.f_zero - (len + num_len);
+	if (flags.p_dot > (len + num_len) - 1)
+		n_zeros = (flags.p_dot + is_neg) - (len + num_len);
+	if (!(!n && !flags.p_dot))
+		ft_putnbr_zero(n, n_zeros, len + num_len);
+	else
+		num_len = 0;
+	len += n_zeros + num_len;
+	len += ft_put_space(flags.f_minus, len);
+	return (len);
 }

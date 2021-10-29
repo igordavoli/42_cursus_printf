@@ -6,7 +6,7 @@
 /*   By: idavoli- <idavoli-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 03:30:00 by idavoli-          #+#    #+#             */
-/*   Updated: 2021/10/21 01:43:35 by idavoli-         ###   ########.fr       */
+/*   Updated: 2021/10/28 23:07:18 by idavoli-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,15 +29,36 @@ static int	ft_num_len(unsigned int n)
 int	ft_resolve_uns(unsigned int n, t_flags flags)
 {
 	int	n_zeros;
+	int num_len;
 	int	len;
 
 	n_zeros = 0;
-	len = ft_num_len(n);
+	len = 0;
+	num_len = ft_num_len(n);
+
+	if (flags.f_zero > flags.p_dot && flags.p_dot < num_len
+		&& flags.p_dot != -1)
+		flags.f_width = flags.f_zero;
+
+	if (flags.f_zero > flags.p_dot && flags.p_dot > num_len
+		&& flags.p_dot != -1)
+		flags.f_width = flags.f_zero - (flags.p_dot - num_len );
+
+	len += ft_put_space(flags.f_width, num_len);
 	if (flags.f_zero > len)
-		n_zeros = flags.f_zero - len;
-	if (flags.p_dot > len - 1)
-		n_zeros = flags.p_dot - len ;
-	ft_putuns_zero(n, n_zeros);
-	ft_put_space(flags.f_minus, &len);
-	return (len + n_zeros);
+		n_zeros = flags.f_zero - (len + num_len);
+	if (flags.p_dot > (len + num_len) - 1)
+		n_zeros = flags.p_dot - (len + num_len);
+	if (n_zeros < 0)
+		n_zeros = 0;
+	if (!(!n && !flags.p_dot))
+		ft_putuns_zero(n, n_zeros);
+	else
+		num_len = 0;
+
+	len += n_zeros + num_len;
+
+
+	len += ft_put_space(flags.f_minus, len);
+	return (len);
 }
