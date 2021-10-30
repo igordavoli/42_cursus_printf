@@ -5,93 +5,35 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: idavoli- <idavoli-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/12 22:17:34 by idavoli-          #+#    #+#             */
-/*   Updated: 2021/10/28 22:58:07 by idavoli-         ###   ########.fr       */
+/*   Created: 2021/10/17 15:09:11 by idavoli-          #+#    #+#             */
+/*   Updated: 2021/10/29 20:49:13 by idavoli-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_put_zeros(int n_zeros)
-{
-	while (n_zeros > 0)
-	{
-		ft_putchar_fd('0', 1);
-		n_zeros--;
-	}
-	return (0);
-}
-
-void	ft_putuns_zero(unsigned int n, int n_zeros)
-{
-	n_zeros = ft_put_zeros(n_zeros);
-	if (n < 10)
-		ft_putchar_fd(n + '0', 1);
-	else
-	{
-		ft_putuns_zero(n / 10, n_zeros);
-		ft_putuns_zero(n % 10, n_zeros);
-	}
-}
-
-int	ft_putstr_c(char *s)
+int	ft_num_len(unsigned int n, int base)
 {
 	int	i;
 
-	i = 0;
-	while (s[i])
-		ft_putchar_fd(s[i++], 1);
+	i = 1;
+	n /= base;
+	while (n)
+	{
+		i++;
+		n /= base;
+	}
 	return (i);
 }
 
-void	ft_putnbr_hex(unsigned long long n, int is_upper, int n_zeros)
+void	ft_handle_zero_dot(unsigned int n, int *num_len, t_flags *flags)
 {
-	char	c;
-
-	n_zeros = ft_put_zeros(n_zeros);
-	if (n < 16)
-	{
-		c = n;
-		if (n > 9 )
-			c += 87;
-		else
-			c += '0';
-		if (c >= 'a' && is_upper)
-			c -= 32;
-		ft_putchar_fd(c, 1);
-	}
-	else
-	{
-		ft_putnbr_hex (n / 16, is_upper, n_zeros);
-		ft_putnbr_hex (n % 16, is_upper, n_zeros);
-	}
-}
-
-
-
-void	ft_putnbr_zero(int n, int n_zeros, int len)
-{
-	if (!len--)
-		return ;
-	if (n == -2147483648)
-	{
-		ft_putchar_fd('-', 1);
-		n_zeros = ft_put_zeros(n_zeros);
-		ft_putchar_fd('2', 1);
-		n = 147483648;
-	}
-	if (n < 0)
-	{
-		n = -n;
-		ft_putchar_fd('-', 1);
-		n_zeros = ft_put_zeros(n_zeros);
-	}
-	n_zeros = ft_put_zeros(n_zeros);
-	if (n < 10)
-		ft_putchar_fd(n + '0', 1);
-	else
-	{
-		ft_putnbr_zero(n / 10, n_zeros, len);
-		ft_putnbr_zero(n % 10, n_zeros, len);
-	}
+	if (flags->f_zero > flags->p_dot && flags->p_dot < *num_len
+		&& flags->p_dot != -1)
+		flags->f_width = flags->f_zero;
+	if (flags->f_zero > flags->p_dot && flags->p_dot > *num_len
+		&& flags->p_dot != -1)
+		flags->f_width = flags->f_zero - (flags->p_dot - *num_len);
+	if (!n && !flags->p_dot)
+		*num_len = 0;
 }

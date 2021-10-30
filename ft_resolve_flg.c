@@ -6,7 +6,7 @@
 /*   By: idavoli- <idavoli-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/15 23:38:59 by idavoli-          #+#    #+#             */
-/*   Updated: 2021/10/25 00:32:51 by idavoli-         ###   ########.fr       */
+/*   Updated: 2021/10/29 21:03:43 by idavoli-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 t_flags	ft_flg_init(void)
 {
-	t_flags		flags;
+	t_flags	flags;
 
 	flags.f_minus = 0;
 	flags.f_zero = 0;

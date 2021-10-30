@@ -6,7 +6,7 @@
 /*   By: idavoli- <idavoli-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 04:36:29 by idavoli-          #+#    #+#             */
-/*   Updated: 2021/10/23 00:44:36 by idavoli-         ###   ########.fr       */
+/*   Updated: 2021/10/29 00:33:38 by idavoli-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,18 +69,14 @@ int	ft_resolve_str(char *str, t_flags flags)
 
 	if (!str)
 		str = "(null)";
-
 	str_len = ft_strlen(str);
 	if (flags.p_dot != -1 && flags.p_dot < str_len)
 		str_len = flags.p_dot;
 	len = str_len;
-
 	if (flags.f_width)
 		len += ft_put_space(flags.f_width, str_len);
-
 	if (flags.f_space)
 		str_len = ft_handle_f_space(flags.f_space, str_len);
-
 	ft_print_str(str, &str_len, flags.p_dot);
 	if (flags.f_minus)
 		len += ft_put_space(flags.f_minus, str_len);

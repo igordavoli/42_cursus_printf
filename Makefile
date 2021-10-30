@@ -6,7 +6,7 @@
 #    By: idavoli- <idavoli-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/24 20:47:53 by vaferrei          #+#    #+#              #
-#    Updated: 2021/10/21 00:49:30 by idavoli-         ###   ########.fr        #
+#    Updated: 2021/10/29 10:23:07 by idavoli-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ LIBFT 	= ./libft/libft.a
 NAME	= libftprintf.a
 
 SRCS = ft_printf.c \
-	ft_printf_utils.c \
+	ft_printf_puts.c \
 	ft_resolve_dec.c \
 	ft_resolve_str.c \
 	ft_resolve_ptr.c \
@@ -24,8 +24,7 @@ SRCS = ft_printf.c \
 	ft_resolve_hex.c \
 	ft_resolve_uns.c \
 	ft_resolve_flg.c \
-	ft_put_space.c
-
+	ft_printf_utils.c
 
 OBJS = ${SRCS:.c=.o}
 
@@ -61,6 +60,6 @@ bonus: all
 test: all
 	${CC} -g main.c libftprintf.a libft/libft.a
 	./a.out
-	@make fclean
+	@make clean
 
 .PHONY: all, bonus, clean, fclean, re
