@@ -6,7 +6,7 @@
 /*   By: idavoli- <idavoli-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/14 23:44:54 by idavoli-          #+#    #+#             */
-/*   Updated: 2021/10/29 20:49:40 by idavoli-         ###   ########.fr       */
+/*   Updated: 2021/10/29 23:03:58 by idavoli-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ int		ft_resolve_uns(unsigned int n, t_flags flags);
 int		ft_resolve_prc(void);
 int		ft_put_space(int spaces, int str_len);
 int		ft_num_len(unsigned int n, int base);
+int		ft_num_len_int(int n);
 void	ft_putnbr_hex(unsigned long long n, int is_upper, int n_zeros);
 void	ft_putuns_zero(unsigned int n, int n_zeros);
 void	ft_putnbr_zero(int n, int n_zeros, int len);

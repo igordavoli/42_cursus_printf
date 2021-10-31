@@ -6,7 +6,7 @@
 /*   By: idavoli- <idavoli-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/17 15:09:11 by idavoli-          #+#    #+#             */
-/*   Updated: 2021/10/29 20:49:13 by idavoli-         ###   ########.fr       */
+/*   Updated: 2021/10/29 23:03:27 by idavoli-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,25 @@ int	ft_num_len(unsigned int n, int base)
 	{
 		i++;
 		n /= base;
+	}
+	return (i);
+}
+
+int	ft_num_len_int(int n)
+{
+	int	i;
+
+	i = 1;
+	if (n < 0)
+	{
+		i += 1;
+		n *= -1;
+	}
+	n /= 10;
+	while (n)
+	{
+		i++;
+		n /= 10;
 	}
 	return (i);
 }

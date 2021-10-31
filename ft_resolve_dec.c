@@ -6,7 +6,7 @@
 /*   By: idavoli- <idavoli-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 03:30:00 by idavoli-          #+#    #+#             */
-/*   Updated: 2021/10/29 21:01:33 by idavoli-         ###   ########.fr       */
+/*   Updated: 2021/10/29 23:03:14 by idavoli-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,31 +19,12 @@ static int	ft_handle_flgs(int n, t_flags flags)
 		ft_putchar_fd('+', 1);
 		return (1);
 	}
-	if (flags.f_space && n >= 0)
+	if (flags.f_space >= 0 && n >= 0)
 	{
 		ft_putchar_fd(' ', 1);
 		return (1);
 	}
 	return (0);
-}
-
-static int	ft_num_len_int(int n)
-{
-	int	i;
-
-	i = 1;
-	if (n < 0)
-	{
-		i += 1;
-		n *= -1;
-	}
-	n /= 10;
-	while (n)
-	{
-		i++;
-		n /= 10;
-	}
-	return (i);
 }
 
 static void	handle_zero_dot(int n, int *num_len, int is_neg, t_flags *flags)

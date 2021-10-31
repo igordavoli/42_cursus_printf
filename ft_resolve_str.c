@@ -6,11 +6,12 @@
 /*   By: idavoli- <idavoli-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 04:36:29 by idavoli-          #+#    #+#             */
-/*   Updated: 2021/10/29 00:33:38 by idavoli-         ###   ########.fr       */
+/*   Updated: 2021/10/29 23:45:32 by idavoli-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include <stdio.h>
 
 static int	ft_putnstr(char *str, int n)
 {
@@ -51,7 +52,7 @@ static int	ft_handle_f_space(int spaces, int str_len)
 		return (spaces);
 	}
 	else
-		return (str_len);
+		return (0);
 }
 
 static void	ft_print_str(char *str, int *len, int n)
@@ -76,8 +77,8 @@ int	ft_resolve_str(char *str, t_flags flags)
 	if (flags.f_width)
 		len += ft_put_space(flags.f_width, str_len);
 	if (flags.f_space)
-		str_len = ft_handle_f_space(flags.f_space, str_len);
-	ft_print_str(str, &str_len, flags.p_dot);
+		len += ft_handle_f_space(flags.f_space, str_len);
+	ft_print_str(str, &len, flags.p_dot);
 	if (flags.f_minus)
 		len += ft_put_space(flags.f_minus, str_len);
 	return (len);

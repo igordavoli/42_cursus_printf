@@ -6,7 +6,7 @@
 /*   By: idavoli- <idavoli-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 03:30:00 by idavoli-          #+#    #+#             */
-/*   Updated: 2021/10/29 20:51:14 by idavoli-         ###   ########.fr       */
+/*   Updated: 2021/10/31 16:43:27 by idavoli-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,19 @@ static void	ft_handle_zeros(int num_len, int len, t_flags *flags, int *n_zeros)
 		*n_zeros = 0;
 }
 
+static int	ft_handle_hash(int n, int hash, int is_upper)
+{
+	if (hash && n)
+	{
+		if (is_upper)
+			ft_putstr_fd("0X", 1);
+		else
+			ft_putstr_fd("0x", 1);
+		return (2);
+	}
+	return (0);
+}
+
 int	ft_resolve_hex(unsigned long long n, int is_upper, t_flags flags)
 {
 	int	len;
@@ -34,14 +47,7 @@ int	ft_resolve_hex(unsigned long long n, int is_upper, t_flags flags)
 	ft_handle_zero_dot(n, &num_len, &flags);
 	ft_handle_zeros(num_len, len, &flags, &n_zeros);
 	len += ft_put_space(flags.f_width, num_len);
-	if (flags.f_hash && n)
-	{
-		if (is_upper)
-			ft_putstr_fd("0X", 1);
-		else
-			ft_putstr_fd("0x", 1);
-		num_len += 2;
-	}
+	num_len += ft_handle_hash(n, flags.f_hash, is_upper);
 	if (!(!n && !flags.p_dot))
 		ft_putnbr_hex(n, is_upper, n_zeros);
 	else
