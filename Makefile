@@ -6,13 +6,13 @@
 #    By: idavoli- <idavoli-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/24 20:47:53 by vaferrei          #+#    #+#              #
-#    Updated: 2021/10/29 10:23:07 by idavoli-         ###   ########.fr        #
+#    Updated: 2021/11/02 00:21:11 by idavoli-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-LIBFT 	= ./libft/libft.a
+LIBFT = ./libft/libft.a
 
-NAME	= libftprintf.a
+NAME = libftprintf.a
 
 SRCS = ft_printf.c \
 	ft_printf_puts.c \
@@ -28,38 +28,37 @@ SRCS = ft_printf.c \
 
 OBJS = ${SRCS:.c=.o}
 
+CC = clang
 
-CC = gcc
-
-CFLAGS = -Wall -Wextra -Werror -g
-
-.c.o:
-	${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
+CFLAGS = -Wall -Wextra -Werror
 
 ${NAME}: ${OBJS}
-	$(MAKE) -C ./libft
+	@make  -C ./libft
 	@cp libft/libft.a $(NAME)
-	ar -rcs ${NAME} ${OBJS}
+	@ar -rcs ${NAME} ${OBJS}
 
-all:	${NAME}
-
-clean:
-	@$(MAKE) clean -C ./libft
-	@rm -f ${OBJS}
-	@rm -f ${BOBJS}
-
-fclean: clean
-	@$(MAKE) fclean -C ./libft
-	@rm -f ${NAME}
-	@rm a.out
+all: ${NAME}
 
 re: fclean all
 
 bonus: all
 
 test: all
-	${CC} -g main.c libftprintf.a libft/libft.a
-	./a.out
+	@${CC} -g main.c libftprintf.a libft/libft.a
 	@make clean
+
+test_run : test
+	@./a.out
+	@make fclean
+
+clean:
+	@make clean -C ./libft
+	@rm -f ${OBJS}
+	@rm -f ${BOBJS}
+
+fclean: clean
+	@make fclean -C ./libft
+	@rm -f ${NAME}
+	@rm a.out
 
 .PHONY: all, bonus, clean, fclean, re
