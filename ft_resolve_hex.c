@@ -6,7 +6,7 @@
 /*   By: idavoli- <idavoli-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 03:30:00 by idavoli-          #+#    #+#             */
-/*   Updated: 2021/10/31 16:43:27 by idavoli-         ###   ########.fr       */
+/*   Updated: 2021/11/02 02:40:58 by idavoli-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@ static int	ft_handle_hash(int n, int hash, int is_upper)
 int	ft_resolve_hex(unsigned long long n, int is_upper, t_flags flags)
 {
 	int	len;
-	int	num_len;
 	int	n_zeros;
+	int	num_len;
 
 	len = 0;
 	n_zeros = 0;
@@ -48,7 +48,7 @@ int	ft_resolve_hex(unsigned long long n, int is_upper, t_flags flags)
 	ft_handle_zeros(num_len, len, &flags, &n_zeros);
 	len += ft_put_space(flags.f_width, num_len);
 	num_len += ft_handle_hash(n, flags.f_hash, is_upper);
-	if (!(!n && !flags.p_dot))
+	if (n || flags.p_dot)
 		ft_putnbr_hex(n, is_upper, n_zeros);
 	else
 		num_len = 0;

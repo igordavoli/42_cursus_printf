@@ -6,7 +6,7 @@
 /*   By: idavoli- <idavoli-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 03:30:00 by idavoli-          #+#    #+#             */
-/*   Updated: 2021/10/29 23:03:14 by idavoli-         ###   ########.fr       */
+/*   Updated: 2021/11/02 02:24:29 by idavoli-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int	ft_resolve_dec(int n, t_flags flags)
 		n_zeros = flags.f_zero - (len + num_len);
 	if (flags.p_dot > (len + num_len) - 1)
 		n_zeros = (flags.p_dot + is_neg) - (num_len);
-	if (!(!n && !flags.p_dot))
+	if (n || flags.p_dot)
 		ft_putnbr_zero(n, n_zeros, len + num_len);
 	else
 		num_len = 0;

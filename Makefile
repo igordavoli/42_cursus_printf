@@ -6,7 +6,7 @@
 #    By: idavoli- <idavoli-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/24 20:47:53 by vaferrei          #+#    #+#              #
-#    Updated: 2021/11/02 00:21:11 by idavoli-         ###   ########.fr        #
+#    Updated: 2021/11/02 02:10:15 by idavoli-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,6 @@ SRCS = ft_printf.c \
 	ft_resolve_str.c \
 	ft_resolve_ptr.c \
 	ft_resolve_chr.c \
-	ft_resolve_prc.c \
 	ft_resolve_hex.c \
 	ft_resolve_uns.c \
 	ft_resolve_flg.c \
