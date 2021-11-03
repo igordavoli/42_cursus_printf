@@ -1,4 +1,4 @@
- <img align="right" src="https://badge42.herokuapp.com/api/project/idavoli-/ft_printfm" />
+ <img align="right" src="https://badge42.herokuapp.com/api/project/idavoli-/ftprintf" />
 <h1></h1>
 
 <div align="center">
