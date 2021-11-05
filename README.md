@@ -8,4 +8,4 @@
 
 ## :sparkles: What's Get ft_printf of 42?
 
-Is a function to get one line a time of text in a archive or other souce thats generate a filedescriptor, like the standard input and output.
+Is a function that print in terminal output diferents data types, its a my own implementation of printf from "stdio" lib.
